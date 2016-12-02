@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.ItemParamWtihCatName" >
+  <resultMap id="BaseResultMap" type="com.taotao.pojo.ItemParamWtihCatName" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  
+  <select id="getItemParamWtihCatName" resultMap="BaseResultMap">
+  	SELECT p.*, c.name as item_cat_name from tb_item_param p, tb_item_cat c where p.item_cat_id = c.id;
+  </select>
+  
+  
+ </mapper>
