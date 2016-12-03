@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface ItemParamWtihCatNameMapper {
 
-    List<com.taotao.pojo.ItemParamWtihCatName> getItemParamWtihCatName();
+    public List<com.taotao.pojo.ItemParamWtihCatName> getItemParamWtihCatName();
 
 }

@@ -23,6 +23,7 @@ com\taotao\pojo\TbOrderItemExample$Criterion.class
 com\taotao\pojo\TbItemDescExample.class
 com\taotao\pojo\TbOrderExample$Criterion.class
 com\taotao\pojo\TbUserExample.class
+com\taotao\pojo\ItemParamWtihCatName.class
 com\taotao\pojo\TbUserExample$Criteria.class
 com\taotao\pojo\TbContentExample.class
 com\taotao\pojo\TbContentExample$GeneratedCriteria.class

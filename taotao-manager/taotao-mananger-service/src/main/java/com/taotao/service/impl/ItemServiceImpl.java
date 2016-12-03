@@ -13,10 +13,14 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EsasyUIDataGridResult;
 import com.taotao.common.util.IDUtils;
 import com.taotao.common.util.TaotaoResult;
+import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
+import com.taotao.mapper.TbItemParamItemMapper;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemExample;
 import com.taotao.pojo.TbItemExample.Criteria;
+import com.taotao.pojo.TbItemParamItem;
 import com.taotao.service.ItemService;
 
 /**
@@ -34,6 +38,11 @@ public class ItemServiceImpl implements ItemService{
 	
 	@Autowired
 	private TbItemMapper itemMapper;
+	@Autowired
+	private TbItemDescMapper itemDescMapper;
+	@Autowired
+	private TbItemParamItemMapper tbItemParamItemMapper;
+	
 	
 	@Override
 	public TbItem getItemById(Long itemId) {
@@ -69,13 +78,31 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public TaotaoResult insertItem(TbItem item) {
+	public TaotaoResult insertItem(TbItem item,String desc,String itemParams) {
 		Date date = new Date();
+		
+		//保存商品实体
 		item.setId(IDUtils.genItemId());
 		item.setUpdated(date);
 		item.setCreated(date);
 		item.setStatus((byte)1);
 		this.itemMapper.insert(item);
+		//保存商品描述
+		TbItemDesc itemDesc = new TbItemDesc();
+		itemDesc.setItemId(item.getId());
+		itemDesc.setCreated(date);
+		itemDesc.setUpdated(date);
+		itemDesc.setItemDesc(desc);
+		this.itemDescMapper.insert(itemDesc);
+		//保存商品规格参数
+		TbItemParamItem itemParamItem = new TbItemParamItem();
+		itemParamItem.setCreated(date);
+		itemParamItem.setUpdated(date);
+		itemParamItem.setItemId(item.getId());
+		itemParamItem.setParamData(itemParams);
+		this.tbItemParamItemMapper.insert(itemParamItem);
+		
+		
 		return TaotaoResult.ok();
 	}
 

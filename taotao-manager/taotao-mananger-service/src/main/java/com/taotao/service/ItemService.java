@@ -11,7 +11,7 @@ public interface ItemService {
 
 	public EsasyUIDataGridResult getItemList(int page,int rows);
 
-	public TaotaoResult insertItem(TbItem item);
+	public TaotaoResult insertItem(TbItem item,String desc,String itemParams);
 	
 	
 }
