@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.common.pojo.EsasyUIDataGridResult;
 import com.taotao.common.util.TaotaoResult;
+import com.taotao.pojo.TbItemParamItem;
 import com.taotao.service.ItemParamService;
 
 /**
@@ -51,5 +52,7 @@ public class ItemParamController {
 	public TaotaoResult deleteItemParam(String ids){
 		return this.itemParamService.deleteItemParamByids(ids);
 	}
+	
+	
 	
 }
