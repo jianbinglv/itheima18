@@ -3,6 +3,7 @@ package com.taotao.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.taotao.common.pojo.EsasyUIDataGridResult;
+import com.taotao.common.util.HttpClientUtil;
 import com.taotao.common.util.TaotaoResult;
 import com.taotao.pojo.TbContent;
 import com.taotao.service.ContentService;
@@ -31,6 +33,9 @@ public class ContentController {
 	
 	@Autowired
 	private ContentService contentService;
+	@Value("${REST_REDIS_SYNC_CONTENT}")
+	private String REST_REDIS_SYNC_CONTENT;
+	
 	
 	//http://localhost:8080/content/query/list?categoryId=0&page=1&rows=20
 	@RequestMapping("/content/query/list")
@@ -44,8 +49,7 @@ public class ContentController {
 	@RequestMapping("/content/save")
 	@ResponseBody
 	public TaotaoResult saveContent(TbContent content){
-		System.out.println(content);
-		
+		HttpClientUtil.doGet(REST_REDIS_SYNC_CONTENT+content.getCategoryId());
 		return this.contentService.insertContent(content);
 		
 	}

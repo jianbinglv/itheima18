@@ -39,6 +39,17 @@ public class ContentController {
 			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 	}
+	@RequestMapping("/content/syncRedisContent/{cid}")
+	@ResponseBody
+	public TaotaoResult syncRedisContent(@PathVariable Long cid){
+		try {
+			TaotaoResult result = this.contentService.syncRedisContent(cid);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+	}
 	
 	
 }
