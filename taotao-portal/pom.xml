@@ -11,11 +11,18 @@
   <packaging>war</packaging>
   
   <dependencies>
+  
   	<dependency>
   		<groupId>com.taotao</groupId>
     	<artifactId>taotao-manager-pojo</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<scope>test</scope>
+	</dependency>
+  
   	<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>

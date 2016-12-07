@@ -37,7 +37,7 @@ public class ItemCatController {
 	} */
 	@RequestMapping(value="/list",produces=MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
 	@ResponseBody
-	public String showItemList(String callback){
+	public String showItemCatList(String callback){
 
 		ItemCatResult result = this.itemCatService.getItemCatList();
 		String json = JsonUtils.objectToJson(result);
@@ -49,6 +49,5 @@ public class ItemCatController {
 			return callback+"("+json+")";
 		}
 	} 
-	
 	
 }
