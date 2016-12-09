@@ -146,7 +146,7 @@
 		
 		<div id="preview">
 			<div id="spec-n1" class="jqzoom" clstag="shangpin|keycount|product|spec-n1">
-				<img data-img="1" width="350" height="350" src="${item.images[0]}" alt="${item.title}"  jqimg="${item.images[0]}"/>
+				<img data-img="1" width="350" height="350" src="${images[0]}" alt="${item.title}"  jqimg="${images[0]}"/>
 			</div>
 					
 			<div id="spec-list" clstag="shangpin|keycount|product|spec-n5">
@@ -154,7 +154,7 @@
 				<a href="javascript:;" class="spec-control" id="spec-backward"></a>
 				<div class="spec-items">
 					<ul class="lh">   
-						<c:forEach items="${item.images}" var="pic" varStatus="status">  
+						<c:forEach items="${images}" var="pic" varStatus="status">  
 							<c:choose>
 								<c:when test="${status.index == 0 }">
 									<li>
@@ -225,6 +225,20 @@
 				</div>
 			</div>
 			<div class="mc hide" data-widget="tab-content" id="product-detail-2">
+				<table border="1" align="center">
+					<c:forEach items="${itemParamitem}" var="item" varStatus="status">
+						 <tr>
+							<th align="center" colspan="2">${item.group}</th>
+						 </tr>
+						 <c:forEach items="${item.params}" var="detail">
+						 	<tr>
+								<td width="100">${detail.k}</td>
+								<td width="400">${detail.v}</td>
+						 	</tr>
+						 </c:forEach>
+					</c:forEach>
+				</table>
+							
 				${itemParam}
 			</div>
 				<div class="mc  hide" data-widget="tab-content" id="product-detail-3"><div class="item-detail">液晶电视×1、底座×1、遥控器×1、使用说明书×1、电源线×1</div></div><div class="mc  hide" data-widget="tab-content" id="product-detail-4"></div><div class="mc hide " data-widget="tab-content" id="product-detail-5"><div class="item-detail">本产品全国联保，享受三包服务，质保期为：一年质保<br />本产品提供上门安装调试、提供上门检测和维修等售后服务，自收到商品之日起，如您所购买家电商品出现质量问题，请先联系厂家进行检测 ，凭厂商提供的故障检测证明，在“我的淘淘-客户服务-返修退换货”页面提交退换申请，将有专业售后人员提供服务。淘淘承诺您：30天内可为您退货或换货，180天内无需修理直接换货，超过180天按国家三包规定享受服务。<br />您可以查询本品牌在各地售后服务中心的联系方式，<a  class="link_1" href="http://www.changhong.com">请点击这儿查询......</a><br />

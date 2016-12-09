@@ -1,7 +1,6 @@
 package com.taotao.rest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,9 +10,9 @@ import com.taotao.common.util.ExceptionUtil;
 import com.taotao.common.util.TaotaoResult;
 import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemDesc;
-import com.taotao.pojo.TbItemParam;
+import com.taotao.pojo.TbItemParamItem;
 import com.taotao.rest.service.ItemDescService;
-import com.taotao.rest.service.ItemParamService;
+import com.taotao.rest.service.ItemParamItemService;
 import com.taotao.rest.service.ItemService;
 
 /**
@@ -30,7 +29,7 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	@Autowired
-	private ItemParamService itemParamService;
+	private ItemParamItemService itemParamitemService;
 	@Autowired
 	private ItemDescService itemDescService;
 	
@@ -64,7 +63,7 @@ public class ItemController {
 	@RequestMapping("/item/param/{itemId}")
 	@ResponseBody
 	public TaotaoResult getItemParam(@PathVariable Long itemId){
-		TbItemParam itemParam = this.itemParamService.getItemParam(itemId);
+		TbItemParamItem itemParam = this.itemParamitemService.getItemParam(itemId);
 		return TaotaoResult.ok(itemParam);
 	}
 	
@@ -78,6 +77,9 @@ public class ItemController {
 	@RequestMapping("/item/desc/{itemId}")
 	@ResponseBody
 	public TaotaoResult getItemDesc(@PathVariable Long itemId){
+	
+		
+		
 		TbItemDesc itemDesc = this.itemDescService.getItemDesc(itemId);
 		return TaotaoResult.ok(itemDesc);
 	}
