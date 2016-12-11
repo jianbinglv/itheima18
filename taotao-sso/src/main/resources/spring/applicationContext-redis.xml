@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+<!--单机版redis 缓存  
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+		<constructor-arg name="port" value="${REDIS_SERVER_PORT}"></constructor-arg>
+	</bean> 
+	
+	<bean id="jedisSingle" class="com.taotao.sso.dao.impl.JedisClientPool"></bean>
+-->
+<!-- 集群rediscluster缓存 -->
+	<bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
+		<constructor-arg>
+			<set>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT1}"></constructor-arg>
+				</bean>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT2}"></constructor-arg>
+				</bean>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT3}"></constructor-arg>
+				</bean>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT4}"></constructor-arg>
+				</bean>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT5}"></constructor-arg>
+				</bean>
+				<bean class="redis.clients.jedis.HostAndPort">
+					<constructor-arg name="host" value="${REDIS_SERVER_IP}"></constructor-arg>
+					<constructor-arg name="port" value="${REDIS_SERVER_PORT6}"></constructor-arg>
+				</bean>
+			</set>
+		</constructor-arg>
+	</bean>
+	<bean id="jedisClientCluster" class="com.taotao.sso.dao.impl.JedisClientCluster"></bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

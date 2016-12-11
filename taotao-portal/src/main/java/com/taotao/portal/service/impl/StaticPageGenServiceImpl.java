@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 
+import com.taotao.common.util.JsonUtils;
 import com.taotao.common.util.TaotaoResult;
 import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemDesc;
@@ -35,7 +36,7 @@ import freemarker.template.TemplateNotFoundException;
  * @version 1.0
  */
 @Service
-public class StaticOageGenServiceImpl implements StaticPageGenService{
+public class StaticPageGenServiceImpl implements StaticPageGenService{
 
 	@Autowired
 	private ItemService itemService;
@@ -53,14 +54,23 @@ public class StaticOageGenServiceImpl implements StaticPageGenService{
 		//取数据
 		TbItem item = itemService.getItemById(iId);
 		String itemDesc = this.itemService.getItemDescById(iId);
-		String itemParam = this.itemService.getItemParamById(iId);
+		String json = this.itemService.getItemParamById(iId);
+		List<Map> list = JsonUtils.jsonToList(json, Map.class);
 		//生成静态html
 		Configuration configuration = freeMarkerConfig.getConfiguration();
 		Template template = configuration.getTemplate(this.FREEMARKER_TEMPLATE);
 		//数据集
 		Map root = new HashMap<>();
 		//添加属性
+		String image = item.getImage();
+		String[] images = image.split(",");
+		root.put("itemDesc", itemDesc);
+		root.put("itemParamitem", list);
+		root.put("item", item);
+		root.put("images", images);
+		System.out.println(item.getPrice());
 		//writer对象
+		
 		Writer out = new FileWriter(new File(this.STATIC_HTML_LOCATION+iId+".html"));
 		template.process(root, out);
 		out.flush();
