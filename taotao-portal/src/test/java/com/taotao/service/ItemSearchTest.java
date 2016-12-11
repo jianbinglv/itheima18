@@ -12,6 +12,7 @@ import com.taotao.portal.service.ItemSearchService;
 
 public class ItemSearchTest {
 
+	
 	@Test
 	public void testSearchItem(){
 		//taotao-portal/src/main/resources/spring/applicationContext-service.xml
