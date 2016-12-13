@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +67,9 @@ public class LoginController {
 	}
 	//http://localhost:8084/user/showLogin
 	@RequestMapping(value="/user/showLogin")
-	public String showLoginPage(){
+	public String showLoginPage(String redirectUrl,Model model){
+		//把参数专递给jsp
+		model.addAttribute("redirect",redirectUrl);
 		return "login";
 	}
 }

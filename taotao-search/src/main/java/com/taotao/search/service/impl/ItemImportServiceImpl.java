@@ -59,6 +59,31 @@ public class ItemImportServiceImpl implements ItemImportService {
 		}
 		return TaotaoResult.ok();
 	}
+	@Override
+	public TaotaoResult importOneItem(Long iId) throws Exception{
+		SolrInputDocument document = new SolrInputDocument();
+		SearchItem item = this.itemMapper.getItem(iId);
+		
+		/*private String id;
+		private String title;
+		private String sell_point;
+		private Long price;
+		private String image;
+		private String category_name;
+		private String item_desc;*/
+		document.addField("id", item.getId());
+		document.addField("item_title", item.getTitle());
+		document.addField("item_sell_point", item.getSell_point());
+		document.addField("item_price", item.getPrice());
+		document.addField("item_image", item.getImage());
+		document.addField("item_category_name", item.getCategory_name());
+		document.addField("item_desc", item.getItem_desc());
+		
+		//写入索引库
+		this.solrServer.add(document);
+		this.solrServer.commit();
+		return TaotaoResult.ok();
+	}
 
 }
 

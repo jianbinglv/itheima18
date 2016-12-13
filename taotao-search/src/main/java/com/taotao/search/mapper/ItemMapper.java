@@ -8,4 +8,5 @@ import com.taotao.common.pojo.SearchItem;
 public interface ItemMapper {
 
 	List<SearchItem> getItemList();
+	SearchItem getItem(Long iId);
 }

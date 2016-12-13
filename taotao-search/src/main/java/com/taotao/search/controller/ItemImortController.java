@@ -27,4 +27,14 @@ public class ItemImortController {
 			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
 		}
 	}
+	@RequestMapping("/importOne")
+	@ResponseBody
+	public TaotaoResult importOneItem(Long iId){
+		try {
+			return this.itemImportService.importOneItem(iId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+		}
+	}
 }

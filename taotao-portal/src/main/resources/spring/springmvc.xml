@@ -8,11 +8,21 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
+	<context:property-placeholder location="classpath:properties/*.properties" />
+
 	<!-- 包扫描器 -->
 	<context:component-scan base-package="com.taotao.portal.controller"></context:component-scan>       
    	<!-- 注解驱动 -->
     <mvc:annotation-driven></mvc:annotation-driven>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- <mvc:mapping path="/order/**"/> -->
+			<mvc:mapping path="/item/**"/>
+			<mvc:mapping path="/order/**"/>
+			<bean class="com.taotao.portal.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	
      <!-- 视图解析器 -->

@@ -152,5 +152,8 @@
 <!-- 购物车相关业务 -->
 <script type="text/javascript" src="/js/cart.js"></script>
 <script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
+	
+	
+
 
 </html>

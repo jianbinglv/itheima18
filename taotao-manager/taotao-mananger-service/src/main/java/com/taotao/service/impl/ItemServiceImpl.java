@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EsasyUIDataGridResult;
+import com.taotao.common.util.HttpClientUtil;
 import com.taotao.common.util.IDUtils;
 import com.taotao.common.util.TaotaoResult;
 import com.taotao.mapper.TbItemDescMapper;
@@ -101,7 +102,8 @@ public class ItemServiceImpl implements ItemService{
 		itemParamItem.setItemId(item.getId());
 		itemParamItem.setParamData(itemParams);
 		this.tbItemParamItemMapper.insert(itemParamItem);
-		
+		//添加到solr索引库中
+		/*HttpClientUtil.doGet("http://localhost:8083/search/importOne?iId="+item.getId());*/
 		
 		return TaotaoResult.ok();
 	}

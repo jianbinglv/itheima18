@@ -53,9 +53,9 @@ public class ItemController {
 	@RequestMapping(value="/item/param/{iid}",produces=MediaType.TEXT_HTML_VALUE+";charset=utf-8")
 	@ResponseBody
 	public String showItemParam(@PathVariable Long iid,Model model){
-		/*String jsonData = this.itemService.getItemParamById(iid);
+		String jsonData = this.itemService.getItemParamById(iid);
 		List<Map> list = JsonUtils.jsonToList(jsonData, Map.class);
-		model.addAttribute("itemParamitem",list);*/
+		model.addAttribute("itemParamitem",list);
 		return "<h3>加载商品规格参数成功</h3>";
 	}	
 }
